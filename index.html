@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Housekeeping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <span class="logo-text">Adelaide Royal Housekeeping</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+            <a href="#">Find support</a>
+            <a href="#">Become a support worker</a>
+            <a href="#">Coordinators and providers</a>
+            <a href="#">Pricing</a>
+            <a href="#">More</a>
+        </nav>
+
+        <!-- Login, Employee Login, Logout, and Register Buttons -->
+        <div class="nav-buttons">
+            <button id="myInfoBtn" class="infoBtn" style="display: none;">My Info</button>
+            <button id="myBookingBtn" class="bookingBtn" style="display: none;">My Booking</button>
+            <button id="loginBtn" class="loginBtn">Log in</button>
+            <button id="employeeLoginBtn" class="employeeLoginBtn">Employee Log in</button>
+            <button id="registerBtn" class="registerBtn">Join now</button>
+            <button id="logoutBtn" class="registerBtn" style="display: none;">Logout</button>
+        </div>
+
+        <!-- My Info pop-up -->
+        <div id="infoModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn" id="closeInfoModal">&times;</span>
+                <h2>My Info</h2>
+                <p>Email: <span id="accountEmail">user@example.com</span></p> <!-- 用户邮箱显示区域 -->
+                <div id="addressInfo" style="display: none;">
+                    <p>Address: 123 Main Street, City, Country</p>
+                </div>
+                <button id="deleteAccountBtn" class="deleteBtn">Delete Account</button> <!-- 删除账户按钮 -->
+            </div>
+        </div>
+
+        <!-- My Booking pop-up -->
+        <div id="bookingInfoModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" id="closeBookingInfoModal">&times;</span>
+                <h2>My Booking</h2>
+
+                <div id="userBookingContent">
+                    <p>Booking details will be displayed here for regular users.</p>
+                </div>
+
+                <div id="employeeBookingContent" style="display: none;">
+                    <p>Health Status:</p>
+                    <ul>
+                        <li>High-risk area visit: <span id="highRiskStatus">No</span></li>
+                        <li>Symptoms (cold, fever, cough): <span id="symptomsStatus">No</span></li>
+                        <li>Recent COVID-19 test result: <span id="covidTestStatus">Negative</span></li>
+                    </ul>
+                    <div id="employeeAddressInfo" style="display: none;">
+                        <p>Address: 123 Main Street, City, Country</p>
+                    </div>
+                    <p id="accessRestrictionMessage" style="display: none; color: red;">
+                        The appointment time is more than 1 day away, so the specific address cannot be viewed temporarily.
+                    </p>
+                </div>
+
+                <button id="cancelBookingBtn" class="cancelBtn" style="display: none;">Cancel Booking</button>
+                <p>Booking details will be displayed here.</p>
+            </div>
+        </div>
+    </header>
+
+    <header>
+        <div class="main-content">
+            <h1 class="service-title">Housekeeping Service</h1>
+            <p class="service-description">Providing you with safe and reliable home services during COVID-19</p>
+            <button id="bookServiceBtn" class="bookBtn">Book Now</button>
+        </div>
+    </header>
+
+    <!-- Login pop-up window -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLoginModal">&times;</span>
+            <h2>Log in</h2>
+            <form id="loginForm">
+                <label for="loginEmail">E-mail：</label>
+                <input type="email" id="loginEmail" name="loginEmail" required>
+
+                <label for="loginPassword">Password：</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+
+                <button type="submit">Log in</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Registration pop-up -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeRegisterModal">&times;</span>
+            <h2>Registration</h2>
+            <form id="registerForm">
+                <label for="registerEmail">E-mail：</label>
+                <input type="email" id="registerEmail" name="registerEmail" required>
+
+                <label for="registerPassword">Password：</label>
+                <input type="password" id="registerPassword" name="registerPassword" required>
+
+                <label for="confirmPassword">Confirm Password：</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Appointment service pop-up window -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+            <h2>Booking Now</h2>
+            <form id="bookingForm">
+                <div id="step1">
+                    <label for="name">Name：</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="phone">Telephone：</label>
+                    <input type="tel" id="phone" name="phone" required>
+
+                    <label for="date">Appointment Date：</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <label for="temperature">Temperature (°C)：</label>
+                    <input type="number" id="temperature" name="temperature" step="0.1" required min="35" max="42">
+                    <label for="service">Select Service：</label>
+                    <select id="service" name="service" required>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="deep-cleaning">Deep Cleaning</option>
+                        <option value="laundry">Laundry</option>
+                        <option value="window-cleaning">Window Cleaning</option>
+                        <option value="carpet-cleaning">Carpet Cleaning</option>
+                        <option value="organizing">Organizing</option>
+                    </select>
+                    <button type="button" onclick="goToStep2()">Next</button>
+                </div>
+
+                <div id="step2" style="display: none;">
+                    <label for="address">Address：</label>
+                    <input type="text" id="address" name="address" required>
+
+                    <label for="zipcode">Zip Code：</label>
+                    <input type="text" id="zipcode" name="zipcode" required>
+
+                    <label>Have you been to high-risk areas recently?</label>
+                    <select id="highRisk" name="highRisk" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+
+                    <label>Do you have symptoms such as cold, fever, or cough?</label>
+                    <select id="symptoms" name="symptoms" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+
+                    <label>Was your last coronavirus test negative?</label>
+                    <select id="covidTest" name="covidTest" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+
+                    <button type="submit" id="reservation">Submit Reservation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bottom banner -->
+    <div class="footer-banner">
+        <img src="bannercleanup.jpeg" alt="Cleanup Banner" class="banner-image">
+        <div class="banner-text">
+            <p>Address: 123 Main Street, City, Country</p>
+            <p>CALL: 123 456</p>
+        </div>
+    </div>
+    <footer class="footer-text">
+        <p>Group 4, If you have any questions, please contact us at 123456@gmail.com</p>
+    </footer>
+</body>
+<script src="script.js"></script>
+</html>

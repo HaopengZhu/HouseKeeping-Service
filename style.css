@@ -1,0 +1,399 @@
+/* style.css */
+
+/* Basic page style */
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    text-align: center;
+}
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+.main-content {
+    background-color: whitesmoke;
+    padding: 20px;
+    margin: 80px auto 40px auto;
+    width: 80%;
+    max-width: 1000px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo-img {
+    height: 200px;
+    margin-right: 10px;
+}
+.logo-text {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    font-size: 16px;
+    color: transparent;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-image 0.3s ease;
+}
+
+.nav-menu a:hover {
+    background-image: linear-gradient(to right, #C0C0C0, #D3D3D3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+.loginBtn, .registerBtn, .bookBtn, .logoutBtn, .infoBtn, .bookingBtn {
+    font-size: 16px;
+    padding: 8px 16px;
+    border: 2px solid #bfa15b;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    color: antiquewhite;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    background-size: 200%;
+    transition: background-image 0.3s, color 0.3s, background-position 0.3s;
+    background-position: right bottom;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.loginBtn:hover, .registerBtn:hover, .bookBtn:hover, .logoutBtn:hover, .infoBtn:hover, .bookingBtn:hover {
+    background-image: linear-gradient(to right, #C0C0C0, #D3D3D3);
+    color: antiquewhite;
+    background-position: left top;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.service-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+
+}
+
+.service-description {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Arial', sans-serif;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #F3F3F3;
+    margin: 10% auto;
+    padding: 30px;
+    width: 400px;
+    border: 2px solid #bfa15b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content input[type="password"],
+.modal-content input[type="tel"],
+.modal-content input[type="date"],
+.modal-content input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    color: #bfa15b;
+    float: right;
+    transition: color 0.3s;
+}
+.close-btn:hover {
+    color: #C0C0C0;
+}
+
+.modal-content button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: antiquewhite;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    border: 2px solid #bfa15b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-image 0.3s, color 0.3s, background-position 0.3s;
+    background-position: right bottom;
+}
+.deleteBtn {
+    font-size: 16px;
+    padding: 8px 16px;
+    border: 2px solid #bfa15b;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: bold;
+    color: #bfa15b;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.employeeLoginBtn {
+    font-size: 14px;
+    padding: 6px 14px;
+    border: 2px solid #bfa15b;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    font-weight: bold;
+    color: #bfa15b;
+    margin-top: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.employeeLoginBtn:hover {
+    background-color: #bfa15b;
+    color: white;
+}
+
+.deleteBtn:hover {
+    background-color: #bfa15b;
+    color: white;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #bfa15b;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.modal-content button[type="submit"]:hover {
+    background-image: linear-gradient(to right, #C0C0C0, #D3D3D3);
+    color: antiquewhite;
+    background-position: left top;
+}
+.modal-content label {
+    font-size: 16px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+.footer-banner {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.banner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.banner-text p {
+    margin: 5px 0;
+}
+
+.modal-content button[type="button"],
+.modal-content button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: antiquewhite;
+    background-color: transparent;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    border: 2px solid #bfa15b;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-image 0.3s, color 0.3s;
+}
+
+.modal-content button[type="button"]:hover,
+.modal-content button[type="submit"]:hover {
+    background-image: linear-gradient(to right, #C0C0C0, #D3D3D3); /* 银色渐变 */
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .service-title {
+        font-size: 28px;
+    }
+    .service-description {
+        font-size: 16px;
+    }
+    .bookBtn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}
+.footer-text {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    background-color: #f3f3f3;
+    font-family: Arial, sans-serif;
+    border-top: 1px solid #ccc;
+}
+
+.footer-text p {
+    margin: 0;
+    font-weight: bold;
+    font-size: 14px;
+    background-image: linear-gradient(to right, #bfa15b, #dcc58a);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.cancelBtn {
+    font-size: 14px;
+    padding: 8px 16px;
+    border: 2px solid #bfa15b;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #bfa15b;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cancelBtn:hover {
+    background-color: #bfa15b;
+    color: white;
+}
+
+#accessRestrictionMessage {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+}
